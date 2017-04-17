@@ -6,11 +6,13 @@ import QuoteFooter from './QuoteFooter.component';
 export default class App extends React.Component {
 	render(){
 		return (
-			<div style={{ backgroundColor: 'red', width: '100%', height: '100%' }} className="container-fluid">
-				<div style={{ marginTop: '12.5%'}} className="col-xs-4 col-xs-offset-4">
-					<QuoteContainer />
+			<div style={{ backgroundColor: 'red' }} className="container-fluid">
+				<div className="row">
+					<div style={{ marginTop: '12.5%', marginLeft: '30%'}} className="col-xs-5 col-xs-offset-3">
+						<QuoteContainer />
+					</div>
+					<QuoteFooter />
 				</div>
-				<QuoteFooter />
 			</div>
 		);
 	}

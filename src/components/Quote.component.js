@@ -12,7 +12,7 @@ export default class Quote extends React.Component {
 					<p  style={{ display: 'inline', fontSize: `${quoteFontSize}em` }}  className="">{this.props.quote}</p>
 				</div>
 				<div className="col-xs-12 col-xs-offset-8">
-					<p className="blockquote">{this.props.author}</p>
+					<footer style={{ fontSize: '1.2em', fontWeight: '100' }} className="blockquote">- {this.props.author}</footer>
 				</div>
 			</div>
 		);

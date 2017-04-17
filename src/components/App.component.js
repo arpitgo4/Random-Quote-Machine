@@ -45,7 +45,6 @@ export default class App extends React.Component {
 	}
 
 	handleNewQuoteClick(quoteObj) {
-	//	console.log(quoteObj);
 		this.setState({...quoteObj});
 	}
 }

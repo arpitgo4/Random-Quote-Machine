@@ -2,7 +2,7 @@ import React from 'react';
 
 import Quote from './Quote.component';
 import TwitterBtn from './TwitterBtn.component';
-import NewQuoteBtn from './NewQuotebtn.component';
+import NewQuoteBtn from './NewQuoteBtn.component';
 
 export default class QuoteContainer extends React.Component {
 
@@ -21,6 +21,4 @@ export default class QuoteContainer extends React.Component {
 			</div>
 		);
 	}
-
-	
 }

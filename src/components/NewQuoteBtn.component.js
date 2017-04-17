@@ -5,7 +5,7 @@ import superagent from 'superagent';
 export default class NewQuoteBtn extends React.Component {
 	render() {
 		return (
-			<div className="">
+			<div>
 				<button style={{ backgroundColor: this.props.backgroundColor, color: 'white' }}
 						onClick={this.getNewQuote.bind(this)}
 						className="btn">New Quote</button>

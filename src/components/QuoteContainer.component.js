@@ -10,7 +10,7 @@ export default class QuoteContainer extends React.Component {
 		return (
 			<div style={{ backgroundColor: 'white', color: this.props.color }} className="block-center">
 				<Quote quote={this.props.quote} author={this.props.author} />
-				<div className="row">
+				<div className="row" style={{ marginTop: '5%' }}>
 					<div className="col-xs-2 col-xs-offset-1"
 					 				style={{ position: 'relative', bottom: 10 }}>
 						<TwitterBtn onClick={this.props.TwitterBtnOnClick} backgroundColor={this.props.color} />

@@ -8,7 +8,7 @@ export default class QuoteContainer extends React.Component {
 
 	render(){
 		return (
-			<div style={{ backgroundColor: 'white', color: this.props.color }} className="block-center">
+			<div style={{ backgroundColor: 'white', color: this.props.color, paddingBottom: '3%' }} className="block-center">
 				<Quote quote={this.props.quote} author={this.props.author} />
 				<div className="row" style={{ marginTop: '5%' }}>
 					<div className="col-xs-2 col-xs-offset-1"

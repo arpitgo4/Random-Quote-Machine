@@ -12,14 +12,22 @@ export default class QuoteContainer extends React.Component {
 				<div className="row">
 					<div className="col-xs-12">
 						<div className="col-xs-2 col-xs-offset-1">
-							<TwitterBtn color="blue" backgroundColor="red" />
+							<TwitterBtn onClick={() => this.handleTwitterClick()} color="blue" backgroundColor="red" />
 						</div>
 						<div className="col-xs-2 col-xs-9">
-							<NewQuoteBtn backgroundColor="red" />
+							<NewQuoteBtn backgroundColor="red" onClick={() => this.handlehandleNewQuoteClick()} />
 						</div>
 					</div>
 				</div>
 			</div>
 		);
+	}
+
+	handleTwitterClick() {
+		console.log("TwitterBtn Clicked!!");
+	}
+
+	handleNewQuoteClick() {
+		console.log("New Quote Btn Clicked!!");
 	}
 }

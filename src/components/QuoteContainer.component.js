@@ -5,18 +5,25 @@ import TwitterBtn from './TwitterBtn.component';
 import NewQuoteBtn from './NewQuotebtn.component';
 
 export default class QuoteContainer extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			color: 'red', //this.props.color,
+			backgroundColor: 'white'
+		}
+	}
+
 	render(){
 		return (
-			<div style={{ backgroundColor: 'white', color: 'white' }} className="block-center">
+			<div style={{ backgroundColor: 'white', color: this.state.color }} className="block-center">
 				<Quote quote="Hello, this is a quote!" author="Arpit Goyal" />
 				<div className="row">
-					<div className="col-xs-12">
-						<div className="col-xs-2 col-xs-offset-1">
-							<TwitterBtn onClick={() => this.handleTwitterClick()} color="blue" backgroundColor="red" />
-						</div>
-						<div className="col-xs-2 col-xs-9">
-							<NewQuoteBtn backgroundColor="red" onClick={() => this.handlehandleNewQuoteClick()} />
-						</div>
+					<div className="col-xs-6 col-xs-offset-1">
+						<TwitterBtn onClick={() => this.handleTwitterClick()} backgroundColor={this.state.color} />
+					</div>
+					<div className="col-xs-4 col-xs-offset-4">
+						<NewQuoteBtn backgroundColor={this.state.color} onClick={() => this.handleNewQuoteClick()} />
 					</div>
 				</div>
 			</div>

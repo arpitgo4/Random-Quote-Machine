@@ -3,7 +3,7 @@ import React from 'react';
 export default class Quote extends React.Component {
 	render() {
 		return (
-			<div className="">
+			<div className="" style={{ color: this.props.color }}>
 				<div>
 					<i className="fa fa-quote-left"></i>
 					<p style={{ display: 'inline' }}  className="">{this.props.quote}</p>

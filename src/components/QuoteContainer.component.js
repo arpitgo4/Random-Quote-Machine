@@ -9,8 +9,8 @@ export default class QuoteContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			color: 'red', //this.props.color,
-			backgroundColor: 'white'
+			color: props.color,
+			backgroundColor: props.backgroundColor 
 		}
 	}
 

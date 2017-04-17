@@ -4,6 +4,15 @@ import QuoteContainer from './QuoteContainer.component';
 import QuoteFooter from './QuoteFooter.component';
 
 export default class App extends React.Component {
+
+	constructor() {
+		super();
+		this.state = {
+			quote: 'This a quote!!',
+			author: 'Arpit Goyal'
+		};
+	}
+
 	render(){
 		return (
 			<div style={{ backgroundColor: 'red'}} className="container-fluid">
@@ -11,6 +20,8 @@ export default class App extends React.Component {
 					<div style={{ marginTop: '12.5%', marginLeft: '30%'}} className="col-xs-5 col-xs-offset-3">
 						<QuoteContainer color="red" 
 										backgroundColor="white"
+										quote={this.state.quote}
+										author={this.state.author}
 										NewQuoteBtnOnClick={this.handleNewQuoteClick.bind(this)}
 										TwitterBtnOnClick={this.handleTwitterClick.bind(this)} />
 					</div>			
@@ -28,7 +39,8 @@ export default class App extends React.Component {
 		console.log("TwitterBtn Clicked!!", this);
 	}
 
-	handleNewQuoteClick() {
-		console.log("New Quote Btn Clicked!!", this);
+	handleNewQuoteClick(quoteObj) {
+	//	console.log(quoteObj);
+		this.setState({...quoteObj});
 	}
 }

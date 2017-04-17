@@ -9,13 +9,13 @@ export default class QuoteContainer extends React.Component {
 	render(){
 		return (
 			<div style={{ backgroundColor: 'white', color: this.props.color }} className="block-center">
-				<Quote quote="Human history becomes more and more a race between education and catastrophe." author="Arpit Goyal" />
+				<Quote quote={this.props.quote} author={this.props.author} />
 				<div className="row">
 					<div className="col-xs-6 col-xs-offset-1">
 						<TwitterBtn onClick={this.props.TwitterBtnOnClick} backgroundColor={this.props.color} />
 					</div>
 					<div className="col-xs-4 col-xs-offset-4">
-						<NewQuoteBtn backgroundColor={this.state.color} onClick={this.props.NewQuoteBtnOnClick} />
+						<NewQuoteBtn backgroundColor={this.props.color} onClick={this.props.NewQuoteBtnOnClick} />
 					</div>
 				</div>
 			</div>

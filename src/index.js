@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import AppRouter from './layouts/App.Router';
+import App from './components/App.component';
 import './index.html';
 
 import 'jquery';
@@ -13,18 +13,6 @@ import 'font-awesome/css/font-awesome.css';
 import './style.css';
 
 ReactDOM.render(
-	<AppRouter />,
+	<App />,
 	document.getElementById('react-app')
 );
-
-// for hot reloading this router component.
-if(module.hot){
-	module.hot.accept('./layouts/App.Router.js', () => {
-		const AppRouter = require('./layouts/App.Router.js').default;
-		console.log('>>>>>> Router Updated !! <<<<<<<')
-		ReactDOM.render(
-			<AppRouter />,
-			document.getElementById('root')
-		);
-	});
-}

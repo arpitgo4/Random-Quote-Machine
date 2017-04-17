@@ -6,35 +6,21 @@ import NewQuoteBtn from './NewQuotebtn.component';
 
 export default class QuoteContainer extends React.Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			color: props.color,
-			backgroundColor: props.backgroundColor 
-		}
-	}
-
 	render(){
 		return (
-			<div style={{ backgroundColor: 'white', color: this.state.color }} className="block-center">
-				<Quote quote="Hello, this is a quote!" author="Arpit Goyal" />
+			<div style={{ backgroundColor: 'white', color: this.props.color }} className="block-center">
+				<Quote quote="Human history becomes more and more a race between education and catastrophe." author="Arpit Goyal" />
 				<div className="row">
 					<div className="col-xs-6 col-xs-offset-1">
-						<TwitterBtn onClick={() => this.handleTwitterClick()} backgroundColor={this.state.color} />
+						<TwitterBtn onClick={this.props.TwitterBtnOnClick} backgroundColor={this.props.color} />
 					</div>
 					<div className="col-xs-4 col-xs-offset-4">
-						<NewQuoteBtn backgroundColor={this.state.color} onClick={() => this.handleNewQuoteClick()} />
+						<NewQuoteBtn backgroundColor={this.state.color} onClick={this.props.NewQuoteBtnOnClick} />
 					</div>
 				</div>
 			</div>
 		);
 	}
 
-	handleTwitterClick() {
-		console.log("TwitterBtn Clicked!!");
-	}
-
-	handleNewQuoteClick() {
-		console.log("New Quote Btn Clicked!!");
-	}
+	
 }

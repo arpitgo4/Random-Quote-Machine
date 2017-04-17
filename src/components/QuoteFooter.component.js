@@ -4,7 +4,7 @@ export default class QuoteFooter extends React.Component {
 	render() {
 		return (
 			<div className="text-center">
-				<p style={{ color: 'white' }}>by Arpit Goyal</p>
+				<p style={{ color: 'white' }}>by Arpit</p>
 			</div>
 		);
 	}

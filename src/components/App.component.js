@@ -41,7 +41,9 @@ export default class App extends React.Component {
 	}
 
 	handleTwitterClick() {
-		console.log("TwitterBtn Clicked!!", this);
+		window.open(`https://twitter.com/intent/tweet?hashtags=quotes
+			&related=freecodecamp
+			&text=%22${this.state.quote}%22%20${this.state.author}`);
 	}
 
 	handleNewQuoteClick(quoteObj) {

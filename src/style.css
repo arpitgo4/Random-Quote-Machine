@@ -1,7 +1,14 @@
-html, body {
+html, body,#react-app {
 	height: 100%;
 }
 
-#react-app {
-	height: 100%;
+
+#newQuoteBtn:focus {
+	outline: 0;
+}
+
+#twitterBtn:focus {
+	outline: 0;
+	border: 0;
+	box-shadow: none;
 }

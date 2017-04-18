@@ -19,3 +19,7 @@ html, body, #react-app {
 #quote {
 	transition: color 500ms linear;
 }
+
+#quote_p {
+	transition: opacity 500ms linear;
+}

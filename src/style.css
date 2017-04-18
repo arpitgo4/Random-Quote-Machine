@@ -1,8 +1,13 @@
-html, body,#react-app {
+html, body, #react-app {
 	height: 100%;
 }
 
 #newQuoteBtn:focus, #twitterBtn:active {
 	outline: 0;
 	box-shadow: none;
+}
+
+#newQuoteBtn, #twitterBtn {
+	border-radius: 2.5px;
+	height: 35px;
 }

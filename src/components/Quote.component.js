@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class Quote extends React.Component {
 	render() {
-		const quoteFontSize = '2';
+		const quoteFontSize = '2.2';
 		const quoteIconFontSize = quoteFontSize * 0.75;
 		return (
 			<div className="row" style={{ color: this.props.color }}>
@@ -11,7 +11,7 @@ export default class Quote extends React.Component {
 					&nbsp;&nbsp;
 					<p  style={{ display: 'inline', fontSize: `${quoteFontSize}em` }}  className="">{this.props.quote}</p>
 				</div>
-				<div style={{ marginTop: '5%', paddingRight: '5.5%' }} className="col-xs-11 text-right ">
+				<div style={{ marginTop: '3%', paddingRight: '5.5%' }} className="col-xs-11 text-right ">
 					<footer style={{ fontSize: '1.2em', fontWeight: '100' }} className="blockquote">- {this.props.author}</footer>
 				</div>
 			</div>

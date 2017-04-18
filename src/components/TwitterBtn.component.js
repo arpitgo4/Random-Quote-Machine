@@ -4,9 +4,9 @@ export default class TwitterBtn extends React.Component {
 	render() {
 		return (
 			<div className="">
-				<i id="twitterBtn" style={{ color: this.props.backgroundColor, backgroundColor: 'white',
-							fontSize: '3em' }} 
-					className="btn fa fa-twitter-square" onClick={() => this.props.onClick()}></i>
+				<i id="twitterBtn" style={{ color: 'white', backgroundColor: this.props.backgroundColor,
+							fontSize: '1.5em' }}
+					className="btn fa fa-twitter" onClick={() => this.props.onClick()}></i>
 			</div>
 		);
 	}

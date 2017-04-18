@@ -20,7 +20,7 @@ export default class App extends React.Component {
 		const length = this.randomColors.length;
 		const color = this.randomColors[Math.floor(Math.random() * length)];
 		return (
-			<div style={{ backgroundColor: `${color}`, height: '100%' }} className="container-fluid">
+			<div id="app-background" style={{ backgroundColor: `${color}`, height: '100%' }} className="container-fluid">
 				<div className="row">
 					<div style={{ marginTop: '12.5%', marginLeft: '30%'}} className="col-xs-5 col-xs-offset-3">
 						<QuoteContainer color={color} 

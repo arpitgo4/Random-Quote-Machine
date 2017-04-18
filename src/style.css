@@ -2,13 +2,7 @@ html, body,#react-app {
 	height: 100%;
 }
 
-
-#newQuoteBtn:focus {
+#newQuoteBtn:focus, #twitterBtn:active {
 	outline: 0;
-}
-
-#twitterBtn:focus {
-	outline: 0;
-	border: 0;
 	box-shadow: none;
 }

@@ -5,7 +5,7 @@ export default class Quote extends React.Component {
 		const quoteFontSize = '2.2';
 		const quoteIconFontSize = quoteFontSize * 0.75;
 		return (
-			<div className="row" style={{ color: this.props.color }}>
+			<div id="quote" className="row" style={{ color: this.props.color }}>
 				<div style={{ marginTop: '5%' }} className="col-xs-10 col-xs-offset-1 text-center">
 					<i style={{ fontSize: `${quoteIconFontSize}em`, position: 'relative', bottom: '7px' }} className="fa fa-quote-left"></i>
 					&nbsp;&nbsp;

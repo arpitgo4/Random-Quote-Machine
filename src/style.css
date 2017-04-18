@@ -11,3 +11,11 @@ html, body, #react-app {
 	border-radius: 2.5px;
 	height: 35px;
 }
+
+#quote-container, #twitterBtn, #newQuoteBtn {
+	transition: background-color 500ms linear;
+}
+
+#quote {
+	transition: color 500ms linear;
+}

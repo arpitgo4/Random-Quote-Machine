@@ -14,7 +14,7 @@ export default class Quote extends React.Component {
 					<div style={{ marginTop: '5%' }} className="col-xs-10 col-xs-offset-1 text-center">
 						<i style={{ fontSize: `${quoteIconFontSize}em`, position: 'relative', bottom: '7px' }} className="fa fa-quote-left"></i>
 						&nbsp;&nbsp;
-						<ReactTransitionGroup component={SingleChild}
+						<ReactTransitionGroup
 							transitionName="quote"
 							transitionEnterTimeout={2000}
 							transitionLeave={true}
@@ -22,7 +22,7 @@ export default class Quote extends React.Component {
 							transitionLeaveTimeout={1000}>
 
 							{(
-								() => <QuoteLine quoteFontSize={quoteFontSize} quote={this.props.quote} />
+								() => <QuoteLine key={Math.random()} quoteFontSize={quoteFontSize} quote={this.props.quote} />
 							)()}
 							
 						</ReactTransitionGroup>
@@ -37,15 +37,6 @@ export default class Quote extends React.Component {
 	}
 }
 
-class SingleChild extends React.Component {
-
-	render() {
-		const children = React.Children.toArray(this.props.children);
-		return children[0] || null;
-	}
-	
-}
-
 class QuoteLine extends React.Component {
 
 	componentWillEnter(done) {
@@ -54,7 +45,7 @@ class QuoteLine extends React.Component {
 	}
 
 	render() {
-		return <p key={Math.random()} style={{ display: 'inline', fontSize: `${this.props.quoteFontSize}em` }}  
+		return <p style={{ display: 'inline', fontSize: `${this.props.quoteFontSize}em` }}  
 											className="">{this.props.quote}</p>
 	}
 
@@ -64,3 +55,12 @@ class QuoteLine extends React.Component {
 	}
 }
 
+
+class SingleChild extends React.Component {
+
+	render() {
+		const children = React.Children.toArray(this.props.children);
+		return children[0] || null;
+	}
+	
+}

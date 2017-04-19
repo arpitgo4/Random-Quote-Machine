@@ -20,9 +20,9 @@ html, body, #react-app {
 	transition: color 500ms linear;
 }
 
-#quote_p {
-	transition: opacity 500ms linear;
-}
+/*#quote-line {
+	transition: opacity 1000ms linear;
+}*/
 
 .quote-enter {
 	opacity: 0;

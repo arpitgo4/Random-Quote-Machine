@@ -40,18 +40,18 @@ export default class Quote extends React.Component {
 class QuoteLine extends React.Component {
 
 	componentWillEnter(done) {
-		console.log('new quote entered!!');
-		done();
+		console.log('new quote entered!!', $("#quote-line")[0]);
+
 	}
 
 	render() {
-		return <p style={{ display: 'inline', fontSize: `${this.props.quoteFontSize}em` }}  
+		return <p id="quote-line" style={{ display: 'inline', fontSize: `${this.props.quoteFontSize}em`, opacity: 1 }}  
 											className="">{this.props.quote}</p>
 	}
 
 	componentWillLeave(done) {
 		console.log('old quote leaving!!');
-		done();
+		$("#quote-line")[0].animate({ opacity: 0 }, 1000, 'swing', done);
 	}
 }
 

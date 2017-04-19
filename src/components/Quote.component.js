@@ -45,6 +45,16 @@ export default class Quote extends React.Component {
 				toFade[2].style.opacity = 1;
 			}, 1000);
 		}, 100);
+	}
 
+	componentDidMount() {
+		const toFade = $('.to-fade');
+		setTimeout(() => {
+				toFade[0].style.opacity = 1;				
+				$('#quote-line').text(this.props.quote);
+				toFade[1].style.opacity = 1;
+				//$('#quote-author').text(this.props.author);
+				toFade[2].style.opacity = 1;
+			}, 1000);
 	}
 }

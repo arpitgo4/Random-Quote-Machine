@@ -22,8 +22,7 @@ export default class Quote extends React.Component {
 							transitionLeaveTimeout={1000}>
 
 							{(
-								() => <SingleChild><p key={Math.random()} style={{ display: 'inline', fontSize: `${quoteFontSize}em` }}  
-											className="">{this.props.quote}</p></SingleChild>
+								() => <QuoteLine quoteFontSize={quoteFontSize} quote={this.props.quote} />
 							)()}
 							
 						</ReactTransitionGroup>
@@ -39,15 +38,24 @@ export default class Quote extends React.Component {
 }
 
 class SingleChild extends React.Component {
+
+	render() {
+		const children = React.Children.toArray(this.props.children);
+		return children[0] || null;
+	}
 	
+}
+
+class QuoteLine extends React.Component {
+
 	componentWillEnter(done) {
 		console.log('new quote entered!!');
 		done();
 	}
 
 	render() {
-		const children = React.Children.toArray(this.props.children);
-		return children[0] || null;
+		return <p key={Math.random()} style={{ display: 'inline', fontSize: `${this.props.quoteFontSize}em` }}  
+											className="">{this.props.quote}</p>
 	}
 
 	componentWillLeave(done) {

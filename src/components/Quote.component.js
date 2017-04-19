@@ -5,6 +5,7 @@ export default class Quote extends React.Component {
 
 	componentWillUpdate(nextProps, nextState) {
 		this.prevQuote = this.props.quote;
+		this.prevAuthor = this.props.author;
 	}
 
 	render() {
@@ -22,7 +23,7 @@ export default class Quote extends React.Component {
 													
 					</div>
 					<div style={{ marginTop: '3%', paddingRight: '5.5%' }} className="col-xs-11 text-right ">
-						<footer style={{ fontSize: '1.2em', fontWeight: '100', opacity: 0 }} className="blockquote to-fade">- {this.props.author}</footer>
+						<footer id="quote-author" style={{ fontSize: '1.2em', fontWeight: '100', opacity: 0 }} className="blockquote to-fade">- {this.prevAuthor}</footer>
 					</div>
 				
 			</div>
@@ -40,6 +41,7 @@ export default class Quote extends React.Component {
 				toFade[0].style.opacity = 1;				
 				$('#quote-line').text(this.props.quote);
 				toFade[1].style.opacity = 1;
+				//$('#quote-author').text(this.props.author);
 				toFade[2].style.opacity = 1;
 			}, 1000);
 		}, 100);

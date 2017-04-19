@@ -3,13 +3,6 @@ import ReactTransitionGroup from 'react-addons-transition-group';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
-class SingleChild extends React.Component {
-	render() {
-		const children = React.Children.toArray(this.props.children);
-		return children[0] || null;
-	}
-}
-
 export default class Quote extends React.Component {
 
 	render() {
@@ -29,8 +22,8 @@ export default class Quote extends React.Component {
 							transitionLeaveTimeout={1000}>
 
 							{(
-								() => <p key={Math.random()} style={{ display: 'inline', fontSize: `${quoteFontSize}em` }}  
-											className="">{this.props.quote}</p>
+								() => <SingleChild><p key={Math.random()} style={{ display: 'inline', fontSize: `${quoteFontSize}em` }}  
+											className="">{this.props.quote}</p></SingleChild>
 							)()}
 							
 						</ReactTransitionGroup>
@@ -42,6 +35,24 @@ export default class Quote extends React.Component {
 				
 			</div>
 		);
+	}
+}
+
+class SingleChild extends React.Component {
+	
+	componentWillEnter(done) {
+		console.log('new quote entered!!');
+		done();
+	}
+
+	render() {
+		const children = React.Children.toArray(this.props.children);
+		return children[0] || null;
+	}
+
+	componentWillLeave(done) {
+		console.log('old quote leaving!!');
+		done();
 	}
 }
 

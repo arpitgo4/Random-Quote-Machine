@@ -1,13 +1,9 @@
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup, ReactTransitionGroup from 'react-addons-css-transition-group';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 
 export default class Quote extends React.Component {
-
-	componentWillUpdate(nextProps, nextState) {
-		
-	}
 
 	render() {
 		const quoteFontSize = '2.2';
@@ -20,8 +16,10 @@ export default class Quote extends React.Component {
 						&nbsp;&nbsp;
 						<ReactCSSTransitionGroup
 							transitionName="quote"
-							transitionEnterTimeout={4000}
-							transitionLeaveTimeout={1}>
+							transitionEnterTimeout={2000}
+							transitionLeave={false}
+							transitionEnter={true}
+							transitionLeaveTimeout={0}>
 
 							{(
 								() => <p key={Math.random()} style={{ display: 'inline', fontSize: `${quoteFontSize}em` }}  
@@ -38,16 +36,4 @@ export default class Quote extends React.Component {
 			</div>
 		);
 	}
-
-	componentDidUpdate(prevProps, prevState) {
-		/*const delay = 2000;
-		$('.to-fade').fadeIn(delay, 'linear');*/
-	}
 }
-
-/*<ReactCSSTransitionGroup
-					transitionName="quote"
-					transitionEnterTimeout={500}
-					transitionLeaveTimeout={500}>
-
-					</ReactCSSTransitionGroup>*/0

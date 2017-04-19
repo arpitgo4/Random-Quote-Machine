@@ -30,14 +30,14 @@ html, body, #react-app {
 
 .quote-enter-active {
 	opacity: 1;
-	transition: opacity 4000ms ease-out;
+	transition: opacity 2s linear;
 }
 
 .quote-leave {
-	opacity: 0;
+	opacity: 1;
 }
 
 .quote-leave-active {
 	opacity: 0;
-	transition: opacity 1ms linear;
+	transition: opacity 10ms linear;
 }

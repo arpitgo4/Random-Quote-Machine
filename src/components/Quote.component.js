@@ -6,7 +6,7 @@ import $ from 'jquery';
 export default class Quote extends React.Component {
 
 	componentWillUpdate(nextProps, nextState) {
-		
+		this.prevQuote = this.props.quote;
 	}
 
 	render() {
@@ -16,23 +16,15 @@ export default class Quote extends React.Component {
 			<div id="quote" className="row" style={{ color: this.props.color }}>
 				
 					<div style={{ marginTop: '5%' }} className="col-xs-10 col-xs-offset-1 text-center">
-						<i style={{ fontSize: `${quoteIconFontSize}em`, position: 'relative', bottom: '7px' }} className="fa fa-quote-left"></i>
+						<i style={{ fontSize: `${quoteIconFontSize}em`, position: 'relative', bottom: '7px', opacity: 0 }} className="fa fa-quote-left to-fade"></i>
 						&nbsp;&nbsp;
-						<ReactCSSTransitionGroup
-							transitionName="quote"
-							transitionEnterTimeout={4000}
-							transitionLeaveTimeout={1}>
 
-							{(
-								() => <p key={Math.random()} style={{ display: 'inline', fontSize: `${quoteFontSize}em` }}  
-											className="">{this.props.quote}</p>
-							)()}
-							
-						</ReactCSSTransitionGroup>
-						
+						<p ref="quote-line" id="quote-line" key={Math.random()} style={{ display: 'inline', fontSize: `${quoteFontSize}em` }}  
+									className="to-fade">{this.prevQuote}</p>
+													
 					</div>
 					<div style={{ marginTop: '3%', paddingRight: '5.5%' }} className="col-xs-11 text-right ">
-						<footer style={{ fontSize: '1.2em', fontWeight: '100' }} className="blockquote">- {this.props.author}</footer>
+						<footer style={{ fontSize: '1.2em', fontWeight: '100', opacity: 0 }} className="blockquote to-fade">- {this.props.author}</footer>
 					</div>
 				
 			</div>
@@ -40,14 +32,19 @@ export default class Quote extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		/*const delay = 2000;
-		$('.to-fade').fadeIn(delay, 'linear');*/
+		const toFade = $('.to-fade');
+		setTimeout(() => {
+			toFade[0].style.opacity = 0;
+			toFade[1].style.opacity = 0;
+			toFade[2].style.opacity = 0;
+
+			setTimeout(() => {
+				toFade[0].style.opacity = 1;				
+				$('#quote-line').text(this.props.quote);
+				toFade[1].style.opacity = 1;
+				toFade[2].style.opacity = 1;
+			}, 1000);
+		}, 100);
+
 	}
 }
-
-/*<ReactCSSTransitionGroup
-					transitionName="quote"
-					transitionEnterTimeout={500}
-					transitionLeaveTimeout={500}>
-
-					</ReactCSSTransitionGroup>*/0

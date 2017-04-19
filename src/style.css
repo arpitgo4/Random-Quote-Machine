@@ -13,31 +13,13 @@ html, body, #react-app {
 }
 
 #app-background, #twitterBtn, #newQuoteBtn {
-	transition: background-color 500ms linear;
+	transition: background-color 1s linear;
 }
 
 #quote {
-	transition: color 500ms linear;
+	transition: color 1s linear;
 }
 
-#quote_p {
-	transition: opacity 500ms linear;
-}
-
-.quote-enter {
-	opacity: 0;
-}
-
-.quote-enter-active {
-	opacity: 1;
-	transition: opacity 4000ms ease-out;
-}
-
-.quote-leave {
-	opacity: 0;
-}
-
-.quote-leave-active {
-	opacity: 0;
-	transition: opacity 1ms linear;
+.to-fade {
+	transition: opacity 1s linear;
 }

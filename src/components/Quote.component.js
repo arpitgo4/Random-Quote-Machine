@@ -5,6 +5,11 @@ import $ from 'jquery';
 
 export default class Quote extends React.Component {
 
+	componentWillUpdate(nextProps, nextState) {
+		this.prevQuote = this.props.quote;
+		this.prevAuthor = this.props.author;
+	}
+ 
 	render() {
 		const quoteFontSize = '2.2';
 		const quoteIconFontSize = quoteFontSize * 0.75;
@@ -14,12 +19,7 @@ export default class Quote extends React.Component {
 					<div style={{ marginTop: '5%' }} className="col-xs-10 col-xs-offset-1 text-center">
 						<i style={{ fontSize: `${quoteIconFontSize}em`, position: 'relative', bottom: '7px' }} className="fa fa-quote-left"></i>
 						&nbsp;&nbsp;
-						<ReactTransitionGroup
-							transitionName="quote"
-							transitionEnterTimeout={2000}
-							transitionLeave={true}
-							transitionEnter={true}
-							transitionLeaveTimeout={1000}>
+						<ReactTransitionGroup component={SingleChild}>
 
 							{(
 								() => <QuoteLine key={Math.random()} quoteFontSize={quoteFontSize} quote={this.props.quote} />
@@ -40,8 +40,9 @@ export default class Quote extends React.Component {
 class QuoteLine extends React.Component {
 
 	componentWillEnter(done) {
-		console.log('new quote entered!!', $("#quote-line")[0]);
-
+		console.log('new quote entered!!', $("#quote-line"));
+		console.log('new comp', this);
+		$('#quote-line').fadeTo(1000, 0, done);
 	}
 
 	render() {
@@ -50,17 +51,27 @@ class QuoteLine extends React.Component {
 	}
 
 	componentWillLeave(done) {
-		console.log('old quote leaving!!');
-		$("#quote-line")[0].animate({ opacity: 0 }, 1000, 'swing', done);
+		console.log('old quote leaving!!', $("#quote-line"));
+		done();
 	}
 }
 
 
 class SingleChild extends React.Component {
 
+	/*componentWillEnter(done) {
+		console.log('new quote entered!!', $("#quote-line"));
+		done();
+	}*/
+
 	render() {
 		const children = React.Children.toArray(this.props.children);
 		return children[0] || null;
 	}
+
+	/*componentWillLeave(done) {
+		console.log('old quote leaving!!', $("#quote-line"));
+		done();
+	}*/
 	
 }

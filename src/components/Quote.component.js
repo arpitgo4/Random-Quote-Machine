@@ -26,7 +26,7 @@ export default class Quote extends React.Component {
 							)()}
 							
 						</ReactTransitionGroup>
-						
+						{quote_callback(this.props.quote, this.props.author)}
 					</div>
 					<div style={{ marginTop: '3%', paddingRight: '5.5%' }} className="col-xs-11 text-right ">
 						<footer style={{ fontSize: '1.2em', fontWeight: '100' }} className="blockquote">- {this.props.author}</footer>
@@ -39,39 +39,50 @@ export default class Quote extends React.Component {
 
 class QuoteLine extends React.Component {
 
+	constructor() {
+		super();
+		this.state = { newQuoteHidden: true };
+	}
+
 	componentWillEnter(done) {
 		console.log('new quote entered!!', $("#quote-line"));
 		console.log('new comp', this);
-		$('#quote-line').fadeTo(1000, 0, done);
+		//$('#quote-line').fadeTo(1000, 0, done);
+		done();
 	}
 
 	render() {
-		return <p id="quote-line" style={{ display: 'inline', fontSize: `${this.props.quoteFontSize}em`, opacity: 1 }}  
+		return <p id="quote-line" style={{ display: 'inline', 
+							fontSize: `${this.props.quoteFontSize}em`, opacity: this.props.hidden ? 0 : 1 }}  
 											className="">{this.props.quote}</p>
 	}
 
 	componentWillLeave(done) {
-		console.log('old quote leaving!!', $("#quote-line"));
-		done();
+		console.log('old quote leaving!!', this);
+		$(this).fadeTo(1000, 0, done);
 	}
 }
 
 
 class SingleChild extends React.Component {
 
-	/*componentWillEnter(done) {
-		console.log('new quote entered!!', $("#quote-line"));
-		done();
-	}*/
-
 	render() {
 		const children = React.Children.toArray(this.props.children);
-		return children[0] || null;
+		console.log('quotes length', children.length);
+		//return children[0] || null;]
+		//children[0].props = { ...children[0].props, hidden: true };
+		return (
+			<div style={{ display: 'inline' }} >
+				{children[0]}
+				{children[1]}
+			</div>
+		);
 	}
-
-	/*componentWillLeave(done) {
-		console.log('old quote leaving!!', $("#quote-line"));
-		done();
-	}*/
 	
+}
+
+const quoteContainer = $('#quote');
+const quote_callback = (quote, author) => {
+	quoteContainer.html();
+	console.log('new ', quote, author);
 }

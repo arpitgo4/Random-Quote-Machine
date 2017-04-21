@@ -11,29 +11,20 @@ export default class Quote extends React.Component {
 	}
  
 	render() {
-		const quoteFontSize = '2.2';
-		const quoteIconFontSize = quoteFontSize * 0.75;
 		return (
-			<div id="quote" className="row" style={{ color: this.props.color }}>
-				
-					<div style={{ marginTop: '5%' }} className="col-xs-10 col-xs-offset-1 text-center">
-						<i style={{ fontSize: `${quoteIconFontSize}em`, position: 'relative', bottom: '7px' }} className="fa fa-quote-left"></i>
-						&nbsp;&nbsp;
-						<ReactTransitionGroup component={SingleChild}>
-
-							{(
-								() => <QuoteLine key={Math.random()} quoteFontSize={quoteFontSize} quote={this.props.quote} />
-							)()}
-							
-						</ReactTransitionGroup>
-						{quote_callback(this.props.quote, this.props.author)}
-					</div>
-					<div style={{ marginTop: '3%', paddingRight: '5.5%' }} className="col-xs-11 text-right ">
-						<footer style={{ fontSize: '1.2em', fontWeight: '100' }} className="blockquote">- {this.props.author}</footer>
-					</div>
+			<div id="quote" ref="quote" className="row" style={{ color: this.props.color }}>
 				
 			</div>
 		);
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		quote_callback(this.props.quote, this.props.author);
+	}
+
+	componentDidMount() {
+		quoteContainer = $(this.refs.quote);
+		quote_callback_mount(this.props.quote, this.props.author);
 	}
 }
 
@@ -52,9 +43,7 @@ class QuoteLine extends React.Component {
 	}
 
 	render() {
-		return <p id="quote-line" style={{ display: 'inline', 
-							fontSize: `${this.props.quoteFontSize}em`, opacity: this.props.hidden ? 0 : 1 }}  
-											className="">{this.props.quote}</p>
+		return 
 	}
 
 	componentWillLeave(done) {
@@ -81,8 +70,60 @@ class SingleChild extends React.Component {
 	
 }
 
-const quoteContainer = $('#quote');
+let quoteContainer;
 const quote_callback = (quote, author) => {
-	quoteContainer.html();
-	console.log('new ', quote, author);
+
+	const quoteFontSize = '2.2';
+	const quoteIconFontSize = quoteFontSize * 0.75;
+
+	const html_template = `
+		<div style="margin-top: 5%" class="col-xs-10 col-xs-offset-1 text-center">
+						<i style="font-size: ${quoteIconFontSize}em; position: relative; bottom: 7px" class="fa fa-quote-left"></i>
+						&nbsp;&nbsp;
+						
+						<p id="quote-line" style="display: inline; font-size: ${quoteFontSize}em"  
+											class="">${quote}</p>
+						
+					</div>
+					<div style="marginTop: 3%; paddingRight: 5.5%;" class="col-xs-11 text-right ">
+						<footer style="font-size: 1.2em; font-weight: 100" class="blockquote">- ${author}</footer>
+					</div>
+	`;	
+
+	$('#quote-line').fadeTo(1000, 0, () => {
+		console.log('fading out done!!');
+		quoteContainer.html(html_template);
+		$('#quote-line').fadeTo(1000, 1, () => {
+			console.log('fading in done!!');
+		});
+	});
+
 }
+
+const quote_callback_mount = (quote, author) => {
+	const quoteFontSize = '2.2';
+	const quoteIconFontSize = quoteFontSize * 0.75;
+
+	const html_template = `
+		<div style="margin-top: 5%" class="col-xs-10 col-xs-offset-1 text-center">
+						<i style="font-size: ${quoteIconFontSize}em; position: relative; bottom: 7px" class="fa fa-quote-left"></i>
+						&nbsp;&nbsp;
+						
+						<p id="quote-line" style="display: inline; font-size: ${quoteFontSize}em"  
+											class="">${quote}</p>
+						
+					</div>
+					<div style="marginTop: 3%; paddingRight: 5.5%;" class="col-xs-11 text-right ">
+						<footer style="font-size: 1.2em; font-weight: 100" class="blockquote">- ${author}</footer>
+					</div>
+	`;
+
+	quoteContainer.css({ opacity: 1 });
+	quoteContainer.html(html_template);
+
+	$('#quote-line').fadeTo(1000, 0, () => {
+		console.log('fading out done!!')
+		
+		$('#quote-line').fadeTo(1000, 1, () => console.log('fading in done!!'));
+	});
+};

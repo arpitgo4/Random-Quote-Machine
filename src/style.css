@@ -1,4 +1,4 @@
-body, #react-app {
+html, body, #react-app {
 	height: 100%;
 }
 
@@ -20,6 +20,23 @@ body, #react-app {
 	transition: color 500ms linear;
 }
 
-#quote_p {
-	transition: opacity 500ms linear;
+.quote-enter {
+	display: none;
+	/*opacity: 0;*/
+} 
+
+.quote-enter-active {
+	/*display: block;*/
+	display: none;
+	/*opacity: 1;
+	transition: opacity 1s linear .5s;*/
+}
+
+.quote-leave {
+	opacity: 1;
+}
+
+.quote-leave-active {
+	opacity: 0;
+	transition: opacity 1s linear;
 }

@@ -19,8 +19,13 @@ export default class Quote extends React.Component {
 						<i style={{ fontSize: `${quoteIconFontSize}em`, position: 'relative', bottom: '7px' }} className="fa fa-quote-left to-fade"></i>
 						&nbsp;&nbsp;
 						
-						<p style={{ display: 'inline', fontSize: `${quoteFontSize}em` }}  className="to-fade">{this.props.quote}</p>
-							
+						<ReactCSSTransitionGroup
+							transitionName="quote"
+							transitionEnterTimeout={1000}
+							transitionLeaveTimeout={1000}>
+
+							<p key={Math.random()} style={{ display: 'inline', fontSize: `${quoteFontSize}em` }}  className="to-fade">{this.props.quote}</p>
+						</ReactCSSTransitionGroup>
 						
 						
 					</div>
@@ -37,10 +42,3 @@ export default class Quote extends React.Component {
 		$('.to-fade').fadeIn(delay, 'linear');*/
 	}
 }
-
-/*<ReactCSSTransitionGroup
-					transitionName="quote"
-					transitionEnterTimeout={500}
-					transitionLeaveTimeout={500}>
-
-					</ReactCSSTransitionGroup>*/

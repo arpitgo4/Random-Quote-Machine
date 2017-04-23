@@ -3,6 +3,11 @@ import $ from 'jquery';
 
 export default class Quote extends React.Component {
 
+	componentWillMount() {
+		this.prevQuote = this.props.quote;
+		this.prevAuthor = this.props.author;
+	}
+
 	componentWillUpdate(nextProps, nextState) {
 		this.prevQuote = this.props.quote;
 		this.prevAuthor = this.props.author;
